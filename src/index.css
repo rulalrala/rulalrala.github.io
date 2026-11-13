@@ -1,40 +1,58 @@
+/* ── 디자인 토큰: 색과 글꼴은 모두 여기서 관리 ── */
 :root {
-  --text: #4b4654;
-  --text-h: #111014;
-  --muted: #7a7483;
-  --bg: #fbfaf8;
-  --surface: #ffffff;
-  --border: #e6e3e9;
-  --accent: #6d28d9;
-  --accent-bg: rgba(109, 40, 217, 0.08);
+  /* 색 */
+  --color-bg: #fff4e0;
+  --color-surface: #ffffff;
+  --color-ink: #111111; /* 색 블록 위 글자 */
+  --color-line: #111111; /* 테두리, 그림자 */
+  --color-dot: rgba(17, 17, 17, 0.18); /* 배경 점 무늬 */
+  --color-text: #1a1a1a;
+  --color-muted: #3d3d3d;
+  --color-primary: #ffd23f; /* 노랑: 헤더 */
+  --color-secondary: #a3e4ff; /* 하늘: 태그 */
+  --color-accent: #ff6b9d; /* 분홍: 구역 제목, 강조 */
+  --color-success: #7ee081; /* 초록: 연락처 */
+  --color-violet: #c4a7ff; /* 보라: 프로젝트 태그 */
 
-  --sans: system-ui, -apple-system, 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', Roboto,
-    sans-serif;
+  /* 글꼴 */
+  --font-body: system-ui, -apple-system, 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic',
+    Roboto, sans-serif;
+  --font-display: 'Arial Black', 'Segoe UI Black', system-ui, 'Apple SD Gothic Neo',
+    'Malgun Gothic', sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', Consolas, 'D2Coding', monospace;
 
-  font: 17px/1.7 var(--sans);
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
+  /* 테두리와 그림자 */
+  --border-width: 3px;
+  --border: var(--border-width) solid var(--color-line);
+  --radius: 6px;
+  --shadow-offset: 6px;
+  --shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--color-line);
+  --shadow-sm: 3px 3px 0 var(--color-line);
+
+  font: 17px/1.7 var(--font-body);
+  color-scheme: light;
+  color: var(--color-text);
+  background: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #c4c1cb;
-    --text-h: #f4f3f6;
-    --muted: #8d8896;
-    --bg: #15141a;
-    --surface: #1d1c23;
-    --border: #2d2b35;
-    --accent: #b794f6;
-    --accent-bg: rgba(183, 148, 246, 0.12);
+    --color-bg: #1b1b1f;
+    --color-surface: #26262c;
+    --color-line: #f2f2f2;
+    --color-dot: rgba(242, 242, 242, 0.12);
+    --color-text: #f2f2f2;
+    --color-muted: #cfcfcf;
+    color-scheme: dark;
   }
 }
 
 @media (max-width: 600px) {
   :root {
     font-size: 16px;
+    --shadow-offset: 4px;
   }
 }
 
@@ -46,14 +64,18 @@
 
 body {
   margin: 0;
-  background: var(--bg);
+  background-color: var(--color-bg);
+  /* 점 무늬 배경 */
+  background-image: radial-gradient(var(--color-dot) 1px, transparent 1px);
+  background-size: 22px 22px;
+  background-attachment: fixed;
 }
 
 h1,
 h2,
 h3 {
-  color: var(--text-h);
-  line-height: 1.25;
+  font-family: var(--font-display);
+  line-height: 1.2;
   margin: 0;
 }
 
@@ -62,12 +84,17 @@ p {
 }
 
 a {
-  color: var(--accent);
+  color: inherit;
+  text-decoration-thickness: 2px;
   text-underline-offset: 3px;
 }
 
 a:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-  border-radius: 4px;
+  outline: var(--border);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-ink);
 }

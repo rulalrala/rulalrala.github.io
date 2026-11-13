@@ -51,7 +51,7 @@ export const profile: Profile = {
       name: '자기소개 페이지',
       description: 'Vite + React + TypeScript로 만든 한 페이지짜리 자기소개 사이트입니다.',
       tech: ['React', 'TypeScript', 'CSS'],
-      link: 'https://github.com/rulalrala/my-profile', // TODO: 실제 저장소 주소 확인
+      link: 'https://github.com/rulalrala/rulalrala.github.io',
     },
     {
       // TODO: 실제 프로젝트가 생기면 교체하기
